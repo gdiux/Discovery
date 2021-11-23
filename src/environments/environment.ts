@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  base_url: 'http://localhost:3000/api',
+  local_url: 'https://discoverysystemspos.com',
+  admin_url: 'https://admin.discoverysystemspos.com'
+
 };
 
 /*
