@@ -37,7 +37,7 @@ import { ProductComponent } from './product/product.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    PipesModule
+    PipesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

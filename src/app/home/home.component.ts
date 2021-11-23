@@ -27,22 +27,21 @@ export class HomeComponent implements OnInit {
   public productos: Product[] = [];
   cargarProductosTop(){
 
-    const endPoint = '/products?desde=0&tipo=top';
+    const endPoint = '/products?desde=0&tipo=top&limite=20';
 
     this.porductService.cargarProductosEnd(0, endPoint)
         .subscribe(
           ({ total, products }) =>{
 
-            this.productos = products;
-            
-            console.log(this.productos);
-            
+            this.productos = products;            
   
           }, (err) => { console.log('Error: ', err); }
           
         );
-
-
   }
+
+  /** ================================================================
+   *   CARGAR PRODUCTOS MAS VENDIDOS
+  ==================================================================== */
 
 }

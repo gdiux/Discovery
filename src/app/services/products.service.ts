@@ -39,11 +39,10 @@ export class ProductsService {
   }
 
   /** ================================================================
-   *   CARGAR PRODUCTOS
+   *   CARGAR PRODUCTOS ENDPOINT
   ==================================================================== */
   cargarProductosEnd(desde: number = 0, end: string){
-    const endPoint = `/products?desde=${desde}`;
-    return this.http.get<LoadProducts>(`${base_url}${endPoint}`, this.headers)
+    return this.http.get<LoadProducts>(`${base_url}${end}`, this.headers)
             .pipe(
               map( resp => {
                 return resp;

@@ -30,6 +30,7 @@
         </div>
     </div>
 </section>
+
 <!-- Color options-->
 <section class="container py-5">
     <div class="row align-items-center py-3 py-md-4">
@@ -57,30 +58,37 @@
 </section>
 <!-- Divider-->
 <hr class="mt-md-2 mb-5">
+
 <!-- Gallery-->
 <section class="container pt-2 pt-md-5">
     <h2 class="text-center mb-5">Productos mas vendidos</h2>
     <div class="row gallery">
 
-        <div class="col-md-4 col-sm-6 mb-grid-gutter">
+        <div class="col-md-4 col-sm-6 mb-grid-gutter" *ngFor="let producto of productos.slice(0, 10)">
             <div class="card product-card-alt">
                 <div class="product-thumb">
-                    <button class="btn-wishlist btn-sm" type="button"><i class="ci-heart"></i></button>
-                    <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href="marketplace-single.html"><i class="ci-eye"></i></a>
-                        <button class="btn btn-light btn-icon btn-shadow fs-base mx-2" type="button"><i class="ci-cart"></i></button>
+                    <div class="product-card-actions">
+                        <a class="btn btn-light btn-icon btn-shadow fs-base mx-2" [routerLink]="['/product', producto.pid]">
+                            <i class="ci-eye"></i>
+                        </a>
                     </div>
-                    <a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="../../assets/img/marketplace/products/01.jpg" alt="Product">
+                    <a class="product-thumb-overlay" [routerLink]="['/product', producto.pid]"></a>
+                    <img [src]="producto.img | imagen: 'products'" [alt]="producto.name">
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
-                        <div class="text-muted fs-xs me-1">by <a class="product-meta fw-medium" href="#">Createx Std. </a>in <a class="product-meta fw-medium" href="#">UI Design</a></div>
-                        <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
+                        <div class="text-muted fs-xs me-1">
+                            <a class="product-meta fw-medium" href="#"> {{ producto.department.name }} </a>
                         </div>
                     </div>
-                    <h3 class="product-title fs-sm mb-2"><a href="marketplace-single.html">Square Style Mobile UI Kit (Sketch)</a></h3>
+                    <h3 class="product-title fs-sm mb-2">
+                        <a [routerLink]="['/product', producto.pid]">{{ producto.name }}</a>
+                    </h3>
                     <div class="d-flex flex-wrap justify-content-between align-items-center">
-                        <div class="fs-sm me-2"><i class="ci-download text-muted me-1"></i>153<span class="fs-xs ms-1">Sales</span></div>
-                        <div class="bg-faded-accent text-accent rounded-1 py-1 px-2">$24.<small>00</small></div>
+                        <div class="fs-sm me-2">
+                            <i class="ci-download text-muted me-1"></i>{{ producto.sold }}<span class="fs-xs ms-1">Vendidos</span>
+                        </div>
+                        <div class="bg-faded-accent text-accent rounded-1 py-1 px-2"> {{ producto.price | currency }} </div>
                     </div>
                 </div>
             </div>
@@ -89,49 +97,49 @@
 
     </div>
 </section>
+
 <!-- Product details-->
 <section class="container py-4 py-md-5 my-2">
-    <h2 class="text-center mb-4 mb-md-5 pb-2">Product details</h2>
+    <h2 class="text-center mb-4 mb-md-5 pb-2">Producto destacado</h2>
     <div class="row text-center text-sm-start">
         <div class="col-lg-5 col-md-6 col-sm-8 offset-lg-2 offset-md-1">
-            <h5 class="mb-3">Highlights</h5>
-            <p class="fs-sm mb-3 mb-lg-4 pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit animasurel. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <h5 class="mb-3">Battery</h5>
+            <h5 class="mb-3">Kit Pos con software Discovery Systems Pos</h5>
+            <p class="fs-sm mb-3 mb-lg-4 pb-2">Kit pos con software moderno que se adapta a las necesidades de tu empresa, para el control y manejo de inventario, multicaja, se pueden conectar desde telefonos, tablets y desde cualquier parte del mundo. Calcula ganancias, tiene movimientos
+                de inventario y sencillo para adaptarlo a un sitio web, ideal para las empresas en crecimiento
+            </p>
+            <h5 class="mb-3">Incluye</h5>
             <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                <li>Up to 40 hours life</li>
-                <li>Fast charging technology</li>
-                <li>Charge via Micro-USB cable</li>
+                <li>CPU - Monitor - Accesorios</li>
+                <li>Cajon Monedero</li>
+                <li>Lectora de codigos barra</li>
+                <li>Impresora termica</li>
             </ul>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-4 offset-md-1">
-            <h5 class="mb-3">General</h5>
+            <h5 class="mb-3">Beneficios</h5>
             <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                <li>Height: 7.8 in / 19.8 cm</li>
-                <li>Weight: 7.58 oz / 215 g</li>
-                <li>Form factor: On ear</li>
+                <li>Conexion Remota desde cualquier parte del mundo</li>
+                <li>Base de datos en la Nube</li>
             </ul>
-            <h5 class="mb-3">Connectivity</h5>
+            <h5 class="mb-3">Garantias</h5>
             <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                <li>Wireless Bluetooth</li>
-                <li>Micro-USD port</li>
-            </ul>
-            <h5 class="mb-3">Other features</h5>
-            <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                <li>Lightweight</li>
-                <li>Durable materials</li>
+                <li>1 año de garantia</li>
+                <li>Soporte dentro y fuera del horario de oficina </li>
             </ul>
         </div>
     </div>
 </section>
+
 <!-- Reviews-->
 <section class="bg-secondary pt-5" style="padding-bottom: 300px;">
     <div class="container py-md-5 mb-4 pt-3 pb-4">
-        <h2 class="text-center mb-4 mb-md-5 pb-2">Customer reviews</h2>
-        <div class="tns-carousel mb-3">
-            <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;:20}, &quot;576&quot;:{&quot;items&quot;:2, &quot;gutter&quot;:20},&quot;850&quot;:{&quot;items&quot;:3, &quot;gutter&quot;:20},&quot;1080&quot;:{&quot;items&quot;:4, &quot;gutter&quot;:25}}}">
-                <blockquote class="mb-2">
+        <h2 class="text-center mb-4 mb-md-5 pb-2">Testimonios</h2>
+
+        <div class="tns-carousel-a mb-3">
+
+            <div class="d-flex justify-content-around flex-wrap">
+
+                <blockquote class="mb-2 col-md-3">
                     <div class="card border-0 shadow-sm"><span class="testimonial-mark"></span>
                         <div class="card-body fs-md text-muted">
                             <div class="mb-2">
@@ -144,12 +152,13 @@
                     <footer class="d-flex justify-content-center pt-4">
                         <div class="d-flex align-items-center"><img class="rounded-circle" src="./assets/img/testimonials/03.jpg" width="50" alt="Richard Davis">
                             <div class="ps-3">
-                                <h6 class="fs-sm mb-n1">Richard Davis</h6><span class="fs-ms text-muted opacity-75">Feb 14, 2020</span>
+                                <h6 class="fs-sm mb-n1">Richard Davis</h6><span class="fs-ms text-muted opacity-75">Febrero 14, 2020</span>
                             </div>
                         </div>
                     </footer>
                 </blockquote>
-                <blockquote class="mb-2">
+
+                <blockquote class="mb-2 col-md-3">
                     <div class="card border-0 shadow-sm"><span class="testimonial-mark"></span>
                         <div class="card-body fs-md text-muted">
                             <div class="mb-2">
@@ -162,12 +171,12 @@
                     <footer class="d-flex justify-content-center pt-4">
                         <div class="d-flex align-items-center"><img class="rounded-circle" src="./assets/img/testimonials/04.jpg" width="50" alt="Laura Willson">
                             <div class="ps-3">
-                                <h6 class="fs-sm mb-n1">Laura Willson</h6><span class="fs-ms text-muted opacity-75">Feb 05, 2020</span>
+                                <h6 class="fs-sm mb-n1">Laura Willson</h6><span class="fs-ms text-muted opacity-75">Octubre 05, 2020</span>
                             </div>
                         </div>
                     </footer>
                 </blockquote>
-                <blockquote class="mb-2">
+                <blockquote class="mb-2 col-md-3">
                     <div class="card border-0 shadow-sm"><span class="testimonial-mark"></span>
                         <div class="card-body fs-md text-muted">
                             <div class="mb-2">
@@ -179,74 +188,24 @@
                     <footer class="d-flex justify-content-center pt-4">
                         <div class="d-flex align-items-center"><img class="rounded-circle" src="./assets/img/testimonials/01.jpg" width="50" alt="Mary Grant">
                             <div class="ps-3">
-                                <h6 class="fs-sm mb-n1">Mary Alice Grant</h6><span class="fs-ms text-muted opacity-75">Jan 27, 2020</span>
+                                <h6 class="fs-sm mb-n1">Mary Alice Grant</h6><span class="fs-ms text-muted opacity-75">Marzo 27, 2021</span>
                             </div>
                         </div>
                     </footer>
                 </blockquote>
-                <blockquote class="mb-2">
-                    <div class="card border-0 shadow-sm"><span class="testimonial-mark"></span>
-                        <div class="card-body fs-md text-muted">
-                            <div class="mb-2">
-                                <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
-                                    <i class="star-rating-icon ci-star"></i>
-                                </div>
-                            </div>Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                    </div>
-                    <footer class="d-flex justify-content-center pt-4">
-                        <div class="d-flex align-items-center"><img class="rounded-circle" src="./assets/img/shop/reviews/01.jpg" width="50" alt="Rafael Marquez">
-                            <div class="ps-3">
-                                <h6 class="fs-sm mb-n1">Rafael Marquez</h6><span class="fs-ms text-muted opacity-75">Dec 19, 2020</span>
-                            </div>
-                        </div>
-                    </footer>
-                </blockquote>
-                <blockquote class="mb-2">
-                    <div class="card border-0 shadow-sm"><span class="testimonial-mark"></span>
-                        <div class="card-body fs-md text-muted">
-                            <div class="mb-2">
-                                <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
-                                    <i class="star-rating-icon ci-star-filled active"></i>
-                                </div>
-                            </div>Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                    </div>
-                    <footer class="d-flex justify-content-center pt-4">
-                        <div class="d-flex align-items-center"><img class="rounded-circle" src="./assets/img/testimonials/02.jpg" width="50" alt="Adrian Lewis">
-                            <div class="ps-3">
-                                <h6 class="fs-sm mb-n1">Adrian Lewis</h6><span class="fs-ms text-muted opacity-75">Dec 13, 2020</span>
-                            </div>
-                        </div>
-                    </footer>
-                </blockquote>
-                <blockquote class="mb-2">
-                    <div class="card border-0 shadow-sm"><span class="testimonial-mark"></span>
-                        <div class="card-body fs-md text-muted">
-                            <div class="mb-2">
-                                <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
-                                </div>
-                            </div>Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                    </div>
-                    <footer class="d-flex justify-content-center pt-4">
-                        <div class="d-flex align-items-center"><img class="rounded-circle" src="./assets/img/shop/reviews/03.jpg" width="50" alt="Daniel Adams">
-                            <div class="ps-3">
-                                <h6 class="fs-sm mb-n1">Daniel Adams</h6><span class="fs-ms text-muted opacity-75">Dec 04, 2020</span>
-                            </div>
-                        </div>
-                    </footer>
-                </blockquote>
+
             </div>
         </div>
     </div>
 </section>
+
 <!-- Related products-->
 <section class="container position-relative" style="margin-top: -300px; z-index: 5;">
     <div class="bg-light rounded-3 shadow-lg py-5 px-grid-gutter">
-        <h2 class="text-center pt-2 pt-md-4 mb-4 mb-md-5">You may also like</h2>
+        <h2 class="text-center pt-2 pt-md-4 mb-4 mb-md-5">Te puede interesar</h2>
         <div class="tns-carousel">
             <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;768&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 30}}}">
+
                 <!-- Product-->
                 <div>
                     <div class="card product-card card-static"><span class="badge badge-danger badge-shadow">Sale</span>
@@ -260,55 +219,7 @@
                     </div>
                 </div>
                 <!-- Product-->
-                <div>
-                    <div class="card product-card card-static">
-                        <a class="card-img-top d-block overflow-hidden" href="#"><img src="./assets/img/home/mono-product/products/02.jpg" alt="Product"></a>
-                        <div class="card-body text-center py-2">
-                            <h3 class="product-title fs-sm"><a href="#">Wireless Bluetooth Headphones</a></h3>
-                            <div class="product-price"><span class="text-accent">$129.<small>99</small></span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product-->
-                <div>
-                    <div class="card product-card card-static">
-                        <a class="card-img-top d-block overflow-hidden" href="#"><img src="./assets/img/home/mono-product/products/03.jpg" alt="Product"></a>
-                        <div class="card-body text-center py-2">
-                            <h3 class="product-title fs-sm"><a href="#">Wireless Bluetooth Earbuds</a></h3>
-                            <div class="product-price"><span class="text-accent">$95.<small>00</small></span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product-->
-                <div>
-                    <div class="card product-card card-static">
-                        <a class="card-img-top d-block overflow-hidden" href="#"><img src="./assets/img/home/mono-product/products/04.jpg" alt="Product"></a>
-                        <div class="card-body text-center py-2">
-                            <h3 class="product-title fs-sm"><a href="#">Wireless Bluetooth Headphones</a></h3>
-                            <div class="product-price"><span class="text-accent">$214.<small>99</small></span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product-->
-                <div>
-                    <div class="card product-card card-static">
-                        <a class="card-img-top d-block overflow-hidden" href="#"><img src="./assets/img/home/mono-product/products/05.jpg" alt="Product"></a>
-                        <div class="card-body text-center py-2">
-                            <h3 class="product-title fs-sm"><a href="#">Wireless Bluetooth Headphones</a></h3>
-                            <div class="product-price"><span class="text-accent">$179.<small>99</small></span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product-->
-                <div>
-                    <div class="card product-card card-static">
-                        <a class="card-img-top d-block overflow-hidden" href="#"><img src="./assets/img/home/mono-product/products/06.jpg" alt="Product"></a>
-                        <div class="card-body text-center py-2">
-                            <h3 class="product-title fs-sm"><a href="#">Wireless Bluetooth Headphones</a></h3>
-                            <div class="product-price"><span class="text-accent">$219.<small>99</small></span></div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

@@ -9,7 +9,8 @@ const admin_url = environment.admin_url;
 })
 export class ImagenPipe implements PipeTransform {
 
-  transform(img: string, tipo: 'products' | 'logo' | 'user' | 'department'): string {
+  transform(img: string, tipo: 'products' | 'logo' | 'user' | 'department'): string {    
+
     if (img) {            
         return `${admin_url}/uploads/${tipo}/${img}`;
     }else{

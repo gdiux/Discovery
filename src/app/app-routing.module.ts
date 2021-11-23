@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, data:{ titulo: 'Inicio'} },
   { path: 'search', component: SearchComponent, data:{ titulo: 'Buscar'} },
-  { path: 'product', component: ProductComponent, data:{ titulo: 'Producto'} },
+  { path: 'product/:id', component: ProductComponent, data:{ titulo: 'Producto'} },
   { path: '**', component: NopagefoundComponent },
 ];
 
