@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 
 // MODULES
@@ -17,7 +17,6 @@ import { HomeComponent } from './home/home.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { SearchComponent } from './search/search.component';
 import { ProductComponent } from './product/product.component';
-
 
 @NgModule({
   declarations: [
@@ -33,11 +32,11 @@ import { ProductComponent } from './product/product.component';
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    RouterModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
     PipesModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

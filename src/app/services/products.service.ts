@@ -88,6 +88,20 @@ export class ProductsService {
               })
             );
   }
+
+  /** ================================================================
+   *   CARGAR PRODUCTOS POR DEPARTAMENTO
+  ==================================================================== */
+  cargarProductoDepartamentoEnd( department: string, end: string ){
+    
+    return this.http.get<LoadProducts>(`${base_url}${end}`, this.headers)
+                    .pipe(
+                      map( resp => {
+                        return resp;
+                      })
+                    );
+  }
+
   /** ================================================================
    *   CARGAR PRODUCTOS POR DEPARTAMENTO
   ==================================================================== */

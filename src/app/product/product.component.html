@@ -1,1 +1,158 @@
-<p>product works!</p>
+<!-- Page Title-->
+<div class="page-title-overlap pt-4" style="background: #131f27;">
+    <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+                    <li class="breadcrumb-item"><a class="text-nowrap" [routerLink]="['/home']"><i class="ci-home"></i>Inicio</a></li>
+                    <li class="breadcrumb-item text-nowrap"><a [routerLink]="['/search/departamento/none']">Ventas</a>
+                    </li>
+                    <li class="breadcrumb-item text-nowrap active" aria-current="page"> {{ producto?.name }} </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+            <h1 class="h3 text-light mb-0"> {{ producto?.name }} </h1>
+        </div>
+    </div>
+</div>
+<!-- Shadow box-->
+<section class="container mb-3 pb-3">
+    <div class="bg-light shadow-lg rounded-3 overflow-hidden">
+        <div class="row">
+            <!-- Content-->
+            <section class="col-lg-8 pt-2 pt-lg-4 pb-4 mb-lg-3">
+                <div class="pt-3 px-4 pe-lg-0 ps-xl-5">
+                    <!-- Product gallery-->
+                    <div class="gallery">
+                        <a class="gallery-item rounded-3 mb-grid-gutter">
+                            <img [src]="producto?.img | imagen: 'products'" [alt]="producto?.name">
+                            <span class="gallery-item-caption"> {{ producto?.name }} </span>
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sidebar-->
+            <aside class="col-lg-4 ps-xl-5">
+                <hr class="d-lg-none">
+                <div class="bg-white h-100 p-4 ms-auto border-start">
+                    <div class="px-lg-2">
+                        <div class="accordion accordion-flush" id="licenses">
+
+                            <div class="accordion-item border-bottom">
+                                <div class="accordion-header d-flex justify-content-between align-items-center py-3">
+                                    <div class="form-check" data-bs-toggle="collapse" data-bs-target="#standard-license">
+                                        <input class="form-check-input" type="radio" name="license" id="license-std" checked>
+                                        <label class="form-check-label fw-medium text-dark" for="license-std">Precio</label>
+                                    </div>
+                                    <h5 class="mb-0 text-accent fw-normal"> {{ producto?.price | currency }} </h5>
+                                </div>
+                                <div class="accordion-collapse collapse show" id="standard-license" data-bs-parent="#licenses">
+                                    <div class="accordion-body py-0 pb-2">
+                                        <ul class="list-unstyled fs-sm">
+                                            <li class="d-flex align-items-center">
+                                                <i class="ci-check-circle text-success me-1"></i>
+                                                <span class="fs-ms">1 año de garantia</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- <button class="btn btn-primary btn-shadow d-block w-100 mt-4" type="button"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button> -->
+                        <div class="bg-success rounded p-3 mt-4 mb-2">
+                            <a class="d-flex align-items-center" [href]="'https://api.whatsapp.com/send/?phone=%2B573205792169&text=Me+interesa+el+articulo+de+tu+sitio+web&app_absent=0'" target="_blank">
+                                <img class="rounded-circle" src="../../assets/img/testimonials/01.jpg" width="50" alt="Vendedora pos">
+                                <div class="ps-2"><span class="fs-ms text-white"> Whatsapp de </span>
+                                    <h6 class="fs-sm mb-0">Ventas</h6>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="bg-secondary rounded p-3 mb-2">
+                            <i class="ci-download h5 text-muted align-middle mb-0 mt-n1 me-2"></i>
+                            <span class="d-inline-block h6 mb-0 me-1"> {{ producto?.bought }} </span>
+                            <span class="fs-sm">Vendidos</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+<!-- Product description + Reviews + Comments-->
+<section class="container pb-4 pb-lg-5">
+    <!-- Nav tabs-->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item"><a class="nav-link p-4 active" href="#details" data-bs-toggle="tab" role="tab">Descripción</a></li>
+    </ul>
+
+    <div class="tab-content pt-2">
+        <!-- Product details tab-->
+        <div class="tab-pane fade show active" id="details" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="fs-md">
+                        {{ producto?.description }}
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Related products carousel-->
+<section class="container mb-5 pb-md-4 pb-lg-3" style="background: #fff; position: relative; border-radius: 20px">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom pb-4 mb-4">
+        <h2 class="h3 mb-0 pt-2">Otros Productos</h2>
+        <!-- <div class="pt-2"><a class="btn btn-outline-accent btn-sm" href="marketplace-category.html">More mockups<i class="ci-arrow-end ms-1 me-n1"></i></a></div> -->
+    </div>
+
+    <!-- Carousel-->
+    <div class="">
+        <div class="d-flex justify-content-around flex-wrap ">
+            <!-- Product-->
+            <div class="col-md-2" *ngFor="let item of productos">
+                <div class="card product-card-alt">
+
+                    <div class="product-thumb">
+
+                        <div class="product-card-actions">
+
+                            <a class="btn btn-light btn-icon btn-shadow fs-base mx-2" [routerLink]="['/product', item.pid]">
+                                <i class="ci-eye"></i>
+                            </a>
+
+                        </div>
+
+                        <a class="product-thumb-overlay" [routerLink]="['/product', item.pid]"></a>
+                        <img [src]=" item.img | imagen: 'products' " [alt]=" item.name ">
+                    </div>
+
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
+                            <div class="text-muted fs-xs me-1"> {{ item.department.name }} </div>
+                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
+                            </div>
+                        </div>
+                        <h3 class="product-title fs-sm mb-2"><a href="#"> {{ item.name }} </a></h3>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="fs-sm me-2"><i class="ci-download text-muted me-1"></i> {{ item.bought }} <span class="fs-xs ms-1">Vendidos</span></div>
+                            <div class="bg-faded-accent text-accent rounded-1 py-1 px-2"> {{ item.price | currency }} </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Product-->
+
+        </div>
+    </div>
+</section>
